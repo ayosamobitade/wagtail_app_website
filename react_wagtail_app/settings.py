@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core'
+    'wagtail.core',
     'modelcluster',
     'tagit',
 
@@ -80,6 +80,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # adding wagtial
+                'wagtail.contrib.redirects.middleware.RedirectMiddleware',
             ],
         },
     },
