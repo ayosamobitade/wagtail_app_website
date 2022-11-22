@@ -148,3 +148,4 @@ MEDIA_ROOT = str(BASE_DIR / 'media')
 MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = 'My Project'
+
