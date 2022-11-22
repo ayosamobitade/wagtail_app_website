@@ -20,7 +20,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 
 #import wagtail modules
-from wagtail.core import urls as wagtial_urls
+from wagtail.core import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
@@ -29,7 +29,7 @@ urlpatterns = [
 
     # for wagtial
     path('cms-admin/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_url)),
+    path('documents/', include(wagtaildocs_urls)),
 
     #wagtail serving mechanism
     re_path(r'', include(wagtail_urls)),
