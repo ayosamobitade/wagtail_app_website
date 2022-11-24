@@ -1,0 +1,11 @@
+DEBUG = 1
+SECRETE_KEYS = 
+DJANGO_ALLOWED_HOST = *
+
+
+SQL_ENGINE = django.db.backends.postgresql
+SQL_DATABASE = react_wagtail_dev
+SQL_USER = react_wagtail
+SQL_PASSWORD = react_wagtail
+SQL_HOST = db
+SQL_PORT = 5432
