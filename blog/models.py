@@ -41,3 +41,42 @@ class BlogCategory(models.Models):
 class Tag(TaggitTag):
     class Meta:
         Proxy = True
+
+from modelcluster.fields import ParentalKey
+from taggit.models import TaggedItemBase
+
+class PostPageBlogCategory(models.Model):
+    page = ParentalKey(
+        'blog.BlogCategory', on_delete = models.CASCADE, related_name = 'post_pages'
+    )
+
+    panels = [ 
+        SnippetChooserPanel('blog_category'),
+    ]
+
+    class Meta: 
+        unique_together = ('page', 'blog_category')
+
+class PostPage(TaggitItemBase):
+    content_object = ParentKey('PostPage', related_name = 'post_tags')
+
+
+
+from modelscluster.tags import ClusterTaggableManager
+
+class PostPage(Page):
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null = True,
+        blank = True,
+        on_delete = models.SET_NULL,
+        related_name = '+',
+    )
+
+    tags = ClusterTaggableManager(through = 'blog.PostPageTag', blank = True)
+
+    content_panels = Page.content_panel + [ 
+        ImageChooserPanel('header_image'),
+        InlinePage('categories', label = 'category'),
+        FieldPanel('tags'),
+    ]
