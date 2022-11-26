@@ -17,3 +17,27 @@ class BlogPage(Page):
     class PostPage(Page):
         header_mage = models.Foreignkey('wagtailimages.Image', null = True, on_delete = models.SET_NULL, related_name = '+', )
         conntent_panels = Pages.content_panels + [ImagesChooserPanel('header_image'),]
+
+
+@register_snippet
+class BlogCategory(models.Models):
+    name = models.CharField(max_length = 255)
+    slug = models.SlugField(unique = True, max_length = 80)
+
+    panels = [
+        FieldPanel('name'),
+        FiledPanel('slug'),
+    ]
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plura = 'Categories'
+
+
+@register_snippet
+class Tag(TaggitTag):
+    class Meta:
+        Proxy = True
