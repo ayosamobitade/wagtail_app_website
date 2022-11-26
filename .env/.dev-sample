@@ -1,5 +1,5 @@
 DEBUG = 1
-SECRETE_KEYS = 
+SECRETE_KEYS = 'random_key'
 DJANGO_ALLOWED_HOST = *
 
 
